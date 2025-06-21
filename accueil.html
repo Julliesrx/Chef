@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef.com</title>
+    <link rel="stylesheet" href="accueil.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+</head>    
+<body>
+
+<header>
+    <a href="accueil.html"> 
+        <img src="Images/logo.png" alt="Logo Chef">
+        <h1>Chef.com</h1>
+    </a>
+    <div class="diva">
+        <a href="#">Entrée</a>
+        <a href="#">Plat</a>
+        <a href="#">Dessert</a>
+        <a href="#">Tendances</a>
+        <a href="#">Recettes</a>
+    </div>
+    <div class="search-container">
+        <input type="text" class="search-box" placeholder="Rechercher">
+        <button class="search-button">Rechercher</button>
+        <select class="compte-button" id="sujet">
+            <option value="">Mon compte</option>
+            <option value="demande1">Profil</option>
+            <option value="demande2">Favoris</option>
+            <option value="demande3">Création</option>
+            <option value="demande4">Paramètres</option>
+        </select>
+    </div>
+</header>
+<main>
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="musique.mp3" type="audio/mp3">
+        Votre navigateur ne supporte pas l'élément audio.
+      </audio>
+    
+      <button class="audiobutton" id="audiobutton" onclick="toggleMusic()"> <img src="Images/volume-up.png" class="logoson" alt="Activer le son"> </button>
+      <script>
+        function toggleMusic() {
+          var music = document.getElementById('backgroundMusic');
+          var audiobutton = document.getElementById('audiobutton');
+          var image = audiobutton.querySelector('img');
+            
+          if (music.paused) {
+            music.play();
+            image.src = "Images/vol&ume-up.png";
+            image.alt = "Activer le son";
+          } else {
+            music.pause();
+            image.src = "Images/volume-mute.png"; 
+            image.alt = "Désactiver le son";
+          }
+        }
+        window.onload = function() {
+            var music = document.getElementById('backgroundMusic');
+            music.volume = 0.5; 
+        };
+      </script>
+    <section class="intro">
+            <div class="pp1">
+                <h2>"Découvrez la richesse et <br> les saveurs des repas <br> à la française"</h2>
+                <p>En France, les repas sont bien plus qu'une simple nécessité : ils incarnent un moment de partage, de plaisir et de tradition. <br> Découvrez les étapes clés d'un repas typique, de l'Apéritif au dessert.</p>
+                <a href="#2" class="lien">See it in action</a> 
+            </div>
+            <div class="newsletter">
+                <h3>Inscrivez-vous ici pour recevoir notre newsletter contenant les recettes du mois</h3>
+                <form method="get">
+                    <input type="text" placeholder="Votre prénom" required>
+                    <input type="text" placeholder="Votre nom" required> 
+                    <p>Quel est votre régime alimentaire ?</p>
+                    <div class="options">
+                        <input type="radio" name="regime" value="omnivore" id="omnivore">
+                        <label for="omnivore">Omnivore</label>
+                        <input type="radio" name="regime" value="vegetarien" id="vegetarien">
+                        <label for="vegetarien">Végétarien</label>
+                        <input type="radio" name="regime" value="vegan" id="vegan">
+                        <label for="vegan">Végan</label>
+                        <input type="radio" name="regime" value="sans" id="sans">
+                        <label for="sans">Sans régime particulier</label>
+                    </div>
+                    <input type="email" placeholder="Votre adresse mail" required>
+                    <input type="password" placeholder="Créez un mot de passe" required>
+                    <label>
+                        <input type="checkbox" required>
+                        J'accepte que mes données soient récupérées afin de recevoir des recettes personnalisées
+                    </label>
+                    <button type="submit" class="jeminscris">Je m'inscris !</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="ecran2" id="2"> <!-- id pour le lien  -->
+            <video autoplay loop muted>
+                <source src="Images/video.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+            </video>
+            <h2 class="overlay-text">Un chef en action</h2> 
+        </section>
+
+        <section class="ambassadeurs">
+            <h2 class="barbabaclass">Les ambassadeurs de ce savoir :</h2>
+            <div class="ambassadeurs-box">
+                <div class="ambassadeur">
+                    <div class="deux">
+                    <img src="Images/pierrehermé.jpg" class="perso"> 
+                    <h4>Pierre Hermé</h4>
+                </div>
+                    <p>Issu d’une famille de boulangers pâtissiers sur plusieurs générations, Pierre Hermé s’est imposé comme l’un des plus grands chefs pâtissiers français, en atteste le titre de Meilleur pâtissier du monde qu’il remporte en 2016 par le World’s 50 Best Restaurants. <br>                        Connu comme le roi du macaron ou encore le Picasso de la pâtisserie, Pierre Hermé a mis au point de nombreux mets dont l’Ispahan, un macaron qui associe la framboise et le litchi à la rose. Il fonde la maison Pierre Hermé en 1998 qui va grandement participer à lui donner sa renommée mondiale. Près de 25 ans plus tard, l’entreprise est implantée sur tous les continents et dans toutes les plus grandes villes (Tokyo, Dubaï, Paris…).</p>
+                </div>
+                <div class="ambassadeur">
+                    <div class="deux">
+                        <img src="Images/philippecontitini.jpg" class="perso"> 
+                        <h4>Phillipe Conticini</h4>
+                    </div>
+                    <p>Considéré par beaucoup comme le père de la pâtisserie moderne, Philippe Conticini a tout au long de sa carrière repoussé les chants du possible en cassant les codes et en mettant l’innovation au cœur de sa pratique. <br> Élu Pâtissier de l’année par le Gault & Millau en 1991, il est le propriétaire de deux restaurants étoilés et a même été l’entraîneur de l’équipe de France de pâtisserie, l’année de son sacre aux Championnats du Monde de 2003. En 2009, le chef pâtissier français réinvente les classiques de la pâtisserie française (tarte Tatin, Paris-Brest, Saint-Honoré) dans son livre de recettes. Certains changements qu’il a apportés à aux recettes sont même devenus le standard aujourd’hui.</p>
+                </div>
+                <div class="ambassadeur">
+                    <div class="deux">
+                        <img src="Images/stéophanielequellec.jpeg" class="perso"> 
+                        <h4>Stéphanie Le Quellec</h4>
+                    </div>
+                    <p>De son vrai nom Stéphanie Lecocq, Stéphanie Le Quellec est un cheffe cuisinière qui voit le jour à Enghien-les-Bains, le 6 décembre 1981. Petite fille, c'est au sein d'une famille gastronome qu'elle passe son enfance. De là, naît une véritable passion pour la cuisine. Cuisinant dès l’âge de 7 ans, c'est naturellement qu'elle intègre le lycée hôtelier Albert-de-Mun de Paris, où elle obtient un BTS, à l'âge de 19 ans.<br>C'est auprès de Philippe Legendre, meilleur ouvrier de France que Stéphanie Le Quellec démarre sa carrière au restaurant Le Cinq de l’hôtel George-V à Paris, en 2001. Sa passion pour la cuisine et sa détermination lui permettent de gravir rapidement les échelons en devenant sous-cheffe aux côtés d'Eric Briffard. La jeune femme, aux deux étoiles du guide Michelin, se lance un nouveau challenge en 2006 en allant travailler pour le groupe Four Seasons, au domaine de Terre Blanche, auprès de Philippe Jourdin. <br> C'est grâce au petit écran que Stéphanie Le Quellec se fait connaître en participant au concours Top Chef 2011, sur M6. Depuis, elle poursuit sa carrière travaille en 2013 comme cheffe du restaurant La Scène de l’hôtel Prince de Galles, à Paris. En 2017, elle réapparaît sur le petit écran en participant à Ma Mère cuisine mieux que la tienne !, une émission diffusée sur M6.</p>
+                </div>
+                <div class="ambassadeur">
+                    <div class="deux">
+                        <img src="Images/alainducasse.jpg" class="perso"> 
+                        <h4>Alain Ducasse</h4>
+                    </div>
+                    <p>Chef créateur et entrepreneur, Alain Ducasse est avant tout un esthète, un artisan passionné du bien vivre et du bien manger, qui a su marquer l'histoire de la gastronomie contemporaine. Reconnu comme l'un des chefs les plus influents de sa génération, il s'est distingué par son approche novatrice et son attachement aux produits de qualité, sublimés dans des créations culinaires qui allient tradition et modernité. <br> L'envie de transmettre est au cœur de ses projets et guide chacune de ses initiatives. Alain Ducasse a toujours cru en la force du partage, que ce soit avec ses équipes, ses clients ou les jeunes générations de cuisiniers. En s'entourant des meilleurs talents, il nourrit une dynamique collective où se mêlent excellence, rigueur et créativité, permettant à chacun de ses établissements de refléter sa vision unique de la cuisine. <br> Connu non seulement pour son exceptionnelle maîtrise de la gastronomie française, il s'est également aventuré au-delà des frontières culinaires en développant des projets ambitieux. Ces derniers témoignent de sa capacité à innover et à repousser les limites de son art, notamment à travers des collaborations dans le domaine de l'art contemporain et des expériences multisensorielles autour du bien vivre.</p>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="barbabaclass">La recette du jour :</h2>
+        <section class="recettedujour">
+            <div class="recipe">
+                <p>Le baba au rhum</p>
+                <a href="baba.html"> <img src="Images/baba.png"> </a>
+            </div>
+            <div class="babainfos">
+                <ul>
+                    <li>Origine : Dessert classique français.</li>
+                    <li>Base : Pâtisserie à pâte levée, légère et aérée.</li>
+                    <li>Forme : Souvent une couronne ou un petit gâteau individuel.</li>
+                    <li>Imbibage : Sirop au rhum pour une texture moelleuse et un goût distinctif.</li>
+                    <li>Garniture : Parfois agrémenté de crème chantilly ou de fruits frais.</li>
+                    <li>Caractéristique : Équilibre entre douceur et intensité du rhum.</li>
+                    <li>Occasions : Apprécié pour les repas festifs ou gourmands.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <a href="#">Mentions légales</a> | <a href="#">Conditions d'utilisation</a>
+    </footer>
+    </body>
+</html>

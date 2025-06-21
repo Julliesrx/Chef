@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef.com</title>
+    <link rel="stylesheet" href="baba.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <script>
+function mettreAJourIngredients() {
+    const personnes = parseInt(document.getElementById("personnes").value) || 1;
+    const forceRhum = document.getElementById("rhum").value;
+    const arôme = document.getElementById("arome").value;
+    const estVegan = document.getElementById("vegan").checked;
+
+    let quantitésDeBase = {
+        farine: 100,
+        levure: 5,
+        oeufs: 1,
+        sucre: 50,
+        beurre: 40,
+        lait: 50,
+        eau: 100,
+        rhum: 20
+    };
+
+    if (forceRhum === "moyenne") {
+        quantitésDeBase.rhum *= 1.5;
+    } else if (forceRhum === "forte") {
+        quantitésDeBase.rhum *= 2;
+    }
+
+    const quantités = {};
+    for (let ingrédient in quantitésDeBase) {
+        quantités[ingrédient] = quantitésDeBase[ingrédient] * personnes;
+    }
+    const listeIngredients = document.getElementById("liste-ingredients");
+    listeIngredients.innerHTML = ""; 
+    
+    listeIngredients.innerHTML = `
+        <h3>Pour la pâte à baba :</h3>
+        ${quantités.farine} g de farine<br>
+        ${quantités.levure} g de levure de boulanger<br>
+        ${estVegan ? 
+        "0 œuf (remplacez par 50 g de compote de pomme par œuf)" : 
+        `${quantités.oeufs} œuf${quantités.oeufs > 1 ? 's' : ''}`}<br>
+        ${quantités.sucre} g de sucre<br>
+        ${estVegan ? "50 g d'huile végétale" : `${quantités.beurre} g de beurre fondu`}<br>
+        ${quantités.lait} ml de lait ${estVegan ? "végétal" : "tiède"}<br>
+        <h3>Pour le sirop :</h3>
+        ${quantités.eau} ml d’eau<br>
+        ${quantités.rhum} ml de rhum ambré<br>
+        <h3>Pour la décoration :</h3>
+        1 gousse de vanille${arôme === "vanille" ? " (extra vanille ajoutée)" : ""}<br>
+        ${arôme === "fleur_oranger" ? "Ajout d'un arôme : Fleur d’oranger" : ""}
+    `;
+}
+
+
+        function gérerVeganNonVegan() {
+            const vegan = document.getElementById("vegan");
+            const nonVegan = document.getElementById("non-vegan");
+
+            if (vegan.checked) {
+                nonVegan.checked = false;
+            } else if (nonVegan.checked) {
+                vegan.checked = false;
+            }
+        }
+            function ActiverMusique() {
+              var music = document.getElementById('backgroundMusic');
+              var audiobutton = document.getElementById('audiobutton');
+              var image = audiobutton.querySelector('img');
+              music.volume = 0.1;
+
+              if (music.muted || music.paused) {
+                music.muted = false; 
+                music.play();
+                image.src = "Images/volume-up.png";
+                image.alt = "Activer le son";
+              } else {
+                music.pause();
+                image.src = "Images/volume-mute.png"; 
+                image.alt = "Désactiver le son";
+              }
+            }
+    </script>
+</head>
+<body onload="ActiverMusique()">
+    <header>
+        <a href="accueil.html"> 
+            <img src="Images/logo.png" alt="Logo Chef">
+            <h1>Chef.com</h1>
+        </a>
+        <div class="diva">
+            <a href="#">Entrée</a>
+            <a href="#">Plat</a>
+            <a href="#">Dessert</a>
+            <a href="#">Tendances</a>
+            <a href="#">Recettes</a>
+        </div>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Rechercher">
+            <button class="search-button">Rechercher</button>
+            <select class="compte-button" id="sujet">
+                <option value="">Mon compte</option>
+                <option value="demande1">Profil</option>
+                <option value="demande2">Favoris</option>
+                <option value="demande3">Création</option>
+                <option value="demande4">Paramètres</option>
+            </select>
+        </div>
+    </header>
+    <main>
+        <audio id="backgroundMusic" loop autoplay muted volume="0.5">
+            <source src="musique.mp3" type="audio/mp3">
+            Votre navigateur ne supporte pas l'élément audio.
+          </audio>
+        
+          <button class="audiobutton" id="audiobutton" onclick="ActiverMusique()"> <img src="Images/volume-up.png" class="logoson" alt="Activer le son"> </button>
+          
+        <h1>Baba au rhum classique</h1>
+        <section class="sectiondassault">
+            <section class="sectionintro">
+                <p>
+                    Le baba au rhum est un dessert emblématique d’origine franco-polonaise, apprécié pour sa texture moelleuse et sa saveur intense. Ce petit gâteau léger, élaboré à base d'une pâte levée, est délicatement imbibé d’un sirop parfumé au rhum.
+                    <br>
+                    <br>
+                    Temps de préparation : 30 minutes
+                    <br>
+                    <br>
+                    Temps de cuisson : 25 minutes
+                    <br>
+                    <br>
+                    Temps de repos : 2 heures
+                    
+                </p>
+                <div class="conteneur-video">
+                  <video autoplay loop muted>
+                    <source src="Images/video.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture des vidéos.
+                  </video>
+                  <div class="overlay-texte"><img class="logovideo" src="Images/logo.png">Chef.com</div>
+                </div>
+               
+                </section>
+            <section class="sectioncontenu">
+                <section class="sectionformulaire">
+                    <form oninput="mettreAJourIngredients()">
+                            <h2>Adaptez cette recette classique à vos besoins en quelques clics</h2>
+                            <div class="nbrp">
+                                <label class="number">Nombre de personnes</label> 
+                                <input type="number" id="personnes" min="1" value="1">
+                        </div>
+                        <select id="rhum">
+                            <option selected disabled>Quantité de rhum</option>
+                            <option value="douce">Douce</option>
+                            <option value="moyenne">Moyenne</option>
+                            <option value="forte">Forte</option>
+                        </select>
+                        <br>
+                        <select id="arome">
+                            <option selected disabled>Ajout d’un arôme supplémentaire</option>
+                            <option value="vanille">Vanille</option>
+                            <option value="fleur_oranger">Fleur d’oranger</option>
+                            <option value="aucun">Aucun</option>
+                        </select>
+                        <br>
+                        <label>Vegan</label>
+                        <input type="radio" id="vegan" name="type" onclick="gérerVeganNonVegan()">
+                        <label>Non Vegan</label>
+                        <input type="radio" id="non-vegan" name="type" onclick="gérerVeganNonVegan()">
+                    </form>
+                </section>
+                <section class="sectionprepa">
+                    <h2>Préparation</h2>
+                    <h3>1. Pâte à baba :</h3>
+                    <p>Mélangez la levure avec le lait tiède et laissez reposer 10 minutes.
+
+                        Dans un saladier, mélangez la farine, le sucre et le sel. Ajoutez les œufs, le mélange lait/levure, puis le beurre fondu. Travaillez la pâte jusqu’à ce qu’elle soit lisse.
+                        
+                        Laissez reposer 1 heure à température ambiante, jusqu’à ce qu’elle double de volume.
+                        
+                    </p>
+                    <h3>2. Mise en moule et cuisson :</h3>
+                    <p>Répartissez la pâte dans des moules beurrés en les remplissant au tiers. Laissez lever à nouveau 30 minutes.
+
+                        Enfournez à 180°C (th. 6) pendant 20 à 25 minutes. Laissez refroidir.
+                    </p>
+                    <h3>3. Sirop au rhum :</h3>
+                    <p>Faites chauffer l’eau, le sucre et la vanille. Une fois le sirop prêt, hors du feu, ajoutez le rhum.
+
+                        Imbibez les babas encore tièdes dans le sirop, en les retournant pour bien les imbiber.
+                    </p>
+                    <h3>4. Finitions :</h3>
+                    <p>Décorez avec de la chantilly et des fruits. Servez immédiatement ou conservez au frais.
+                    </p>
+                </section>
+                <section class="sectioningredient">
+                    <h2>Ingrédients</h2>
+                    <div id="liste-ingredients">
+                        <h3>Pour la pâte à baba :</h3>
+                        100 g de farine<br>
+                        5 g de levure de boulanger<br>
+                        1 œuf<br>
+                        50 g de sucre<br>
+                        40 g de beurre fondu<br>
+                        50 ml de lait tiède<br>
+                        <h3>Pour le sirop :</h3>
+                        100 ml d’eau<br>
+                        20 ml de rhum ambré<br>
+                        <h3>Pour la décoration :</h3>
+                        1 gousse de vanille
+                    </div>
+                </section>
+        </section>
+        </section>
+            <h2 class="RStitre">Recette similaire</h2>
+            <section class="sectionRS">
+                <div class="RScontenu">
+                <a href="random.html"><img src="Images/recette.jpg"></a>
+                    <div class="slide">
+                        <h2>Baba au rhum de la Réunion</h2>
+                        <p>Le baba au rhum de La Réunion est une variante du célèbre dessert français qui utilise du rhum local pour le sirop.
+                        Le baba au rhum de La Réunion est généralement servi avec une crème chantilly ou des fruits frais, et peut être dégusté le lendemain pour un moelleux et une saveur démultipliés.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="sectionavis">
+                <h2 class="titreavis">Avis</h2>
+                <section class="avis">
+                    <img class="pp" href="https://imgs.search.brave.com/78UIF3rbw6ztjHaIeWjthN6KSYHDBKJn7V85B2iNAi4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2VjLzYz/L2UwL2VjNjNlMGE0/NGQ5ZWYyZGM4MzA4/NjE1ZjJjNDc3ODI2/LmpwZw">
+                    <h3>Léa G.</h3>
+                    <p>"J’ai essayé cette recette pour l’anniversaire de mon chien (oui, il adore le rhum, ne jugez pas !). Résultat : un succès total ! Même ma grand-mère, qui ne jure que par ses vieux grimoires de cuisine, a demandé la recette."</p>
+                </section>
+                <section class="avis">
+                    <img class="pp" href="https://imgs.search.brave.com/78UIF3rbw6ztjHaIeWjthN6KSYHDBKJn7V85B2iNAi4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2VjLzYz/L2UwL2VjNjNlMGE0/NGQ5ZWYyZGM4MzA4/NjE1ZjJjNDc3ODI2/LmpwZw">
+                    <h3>Jean-Marc P.</h3>
+                    <p>"La recette est sympa, mais j’ai dû improviser. N’ayant pas de rhum, j’ai utilisé du pastis… Mauvaise idée, toute la famille a trouvé que ça goûtait un peu trop « vacances à Marseille ». La texture, en revanche, était parfaite."</p>
+                </section>
+                <section class="avisdernier">
+                    <img class="pp" href="https://imgs.search.brave.com/78UIF3rbw6ztjHaIeWjthN6KSYHDBKJn7V85B2iNAi4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2VjLzYz/L2UwL2VjNjNlMGE0/NGQ5ZWYyZGM4MzA4/NjE1ZjJjNDc3ODI2/LmpwZw">
+                    <h3>Amélie B.</h3>
+                    <p>"Horrible expérience. J’ai suivi la recette à la lettre, mais mon baba s’est rebellé. Il a gonflé dans le four comme un ballon de rugby et s’est transformé en arme contondante après refroidissement. Impossible de couper une part sans risquer une fracture de poignet."</p>
+                </section>
+            </section>
+        
+    </main>
+    <footer>
+        <a href="#">Mentions légales</a> | <a href="#">Conditions d'utilisation</a>
+    </footer>
+    
+</body>
+</html>
